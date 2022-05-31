@@ -3,12 +3,14 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const path = require('path');
+const dotenv = require('dotenv');
+dotenv.config();
 
 
 const userRoutes = require('./routes/user');
 const sauceRoutes = require('./routes/sauce');
 
-mongoose.connect('mongodb+srv://test2:test36@cluster0.vwauh.mongodb.net/Cluster0?retryWrites=true&w=majority',
+mongoose.connect(process.env.SECRET_MDB,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true

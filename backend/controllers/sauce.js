@@ -4,10 +4,10 @@ const fs = require('fs');
 exports.getAllSauces = (req, res, next) => {
     Sauce.find()
         .then((sauces) => {
-            res.status(201).json(sauces)
+            res.status(200).json(sauces)
         })
         .catch((error) => {
-            res.status(400).json({ error: error })
+            res.status(400).json({ error })
         });
 };
 
@@ -17,7 +17,7 @@ exports.getOneSauce = (req, res, next) => {
             res.status(200).json(sauce)
         })
         .catch((error) => {
-            res.status(404).json({ error: error })
+            res.status(404).json({ error })
         });
 };
 
@@ -97,6 +97,6 @@ exports.likeOrDisklikeSauce = (req, res, next) => {
             break;
 
         default:
-            console.log(error);
+            res.status(404).end();
     };
 };
